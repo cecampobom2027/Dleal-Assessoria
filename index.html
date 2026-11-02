@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Débora Leal | Consultoria Financeira, Controladoria e FP&A</title>
+  <meta name="description" content="Débora Leal - Consultoria em FP&A, Controladoria, Orçamento Empresarial, Planejamento Tributário e Gestão de Projetos.">
+  <style>
+    :root {
+      --azul: #0f2a43;
+      --azul-claro: #1d4e79;
+      --dourado: #c8a35a;
+      --fundo: #f6f8fb;
+      --texto: #1f2933;
+      --cinza: #5b6672;
+      --branco: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(15, 42, 67, 0.97);
+      backdrop-filter: blur(6px);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { color: var(--branco); font-weight: 700; letter-spacing: .5px; font-size: 1.1rem; }
+    .logo span { color: var(--dourado); }
+    nav ul { display: flex; gap: 22px; list-style: none; }
+    nav a { color: #dbe5ef; font-size: .92rem; transition: color .2s; }
+    nav a:hover { color: var(--dourado); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
+      color: var(--branco);
+      padding: 96px 0 88px;
+    }
+    .hero small {
+      color: var(--dourado); letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin: 12px 0 8px; line-height: 1.1; }
+    .hero h2 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 400; color: #dbe5ef; margin-bottom: 20px; }
+    .hero p { max-width: 680px; color: #e8eef5; font-size: 1.08rem; }
+    .btns { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-block; padding: 13px 28px; border-radius: 6px;
+      font-weight: 600; font-size: .95rem; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--dourado); color: var(--azul); }
+    .btn-outline { border: 2px solid var(--dourado); color: var(--branco); }
+
+    /* Seções */
+    section { padding: 80px 0; }
+    section.alt { background: var(--branco); }
+    .titulo { margin-bottom: 40px; }
+    .titulo h2 { font-size: 2rem; color: var(--azul); position: relative; padding-bottom: 14px; }
+    .titulo h2::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 56px; height: 4px; background: var(--dourado); border-radius: 2px;
+    }
+    .titulo p { color: var(--cinza); margin-top: 14px; max-width: 720px; }
+
+    /* Grid e cards */
+    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+    .card {
+      background: var(--branco); border-radius: 10px; padding: 28px;
+      box-shadow: 0 4px 18px rgba(15, 42, 67, .08);
+      border-top: 4px solid var(--dourado);
+      transition: transform .2s, box-shadow .2s;
+    }
+    section.alt .card { background: var(--fundo); }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 26px rgba(15, 42, 67, .14); }
+    .card h3 { color: var(--azul); margin-bottom: 10px; font-size: 1.15rem; }
+    .card p { color: var(--cinza); font-size: .96rem; }
+    .card ul { padding-left: 18px; color: var(--cinza); font-size: .95rem; }
+    .card li { margin-bottom: 5px; }
+    .periodo { display: inline-block; font-size: .8rem; color: var(--azul-claro); font-weight: 600; margin-bottom: 8px; }
+    .foco {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid #dde3ea;
+      font-size: .9rem; color: var(--azul);
+    }
+
+    /* Sobre */
+    .sobre { display: grid; gap: 40px; grid-template-columns: 1.5fr 1fr; align-items: start; }
+    .sobre p { margin-bottom: 16px; color: var(--cinza); }
+    .destaque {
+      background: var(--azul); color: var(--branco); border-radius: 10px; padding: 28px;
+    }
+    .destaque h3 { color: var(--dourado); margin-bottom: 14px; }
+    .destaque li { margin-bottom: 8px; margin-left: 18px; font-size: .95rem; }
+
+    /* Perguntas */
+    .perguntas { list-style: none; display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .perguntas li {
+      background: var(--branco); padding: 18px 20px; border-left: 4px solid var(--dourado);
+      border-radius: 6px; box-shadow: 0 2px 10px rgba(15, 42, 67, .06); color: var(--azul);
+    }
+
+    /* Experiência */
+    .timeline { border-left: 3px solid var(--dourado); padding-left: 26px; }
+    .item { position: relative; margin-bottom: 26px; }
+    .item::before {
+      content: ""; position: absolute; left: -35px; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--azul); border: 3px solid var(--dourado);
+    }
+    .item h3 { color: var(--azul); font-size: 1.05rem; }
+    .item span { color: var(--cinza); font-size: .92rem; }
+
+    /* Etapas */
+    .etapas { counter-reset: etapa; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+    .etapa {
+      counter-increment: etapa; background: var(--branco); border-radius: 10px;
+      padding: 26px 20px; text-align: center; box-shadow: 0 4px 14px rgba(15, 42, 67, .08);
+    }
+    .etapa::before {
+      content: counter(etapa); display: flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; margin: 0 auto 12px; border-radius: 50%;
+      background: var(--dourado); color: var(--azul); font-weight: 700;
+    }
+    .etapa h3 { color: var(--azul); font-size: 1rem; margin-bottom: 6px; }
+    .etapa p { color: var(--cinza); font-size: .9rem; }
+
+    /* Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      background: var(--branco); border: 1px solid var(--dourado); color: var(--azul);
+      padding: 8px 16px; border-radius: 30px; font-size: .9rem; font-weight: 500;
+    }
+
+    /* Contato */
+    .contato { background: var(--azul); color: var(--branco); text-align: center; }
+    .contato h2 { font-size: 2rem; margin-bottom: 12px; }
+    .contato p { color: #dbe5ef; max-width: 640px; margin: 0 auto 26px; }
+    .contato .info { margin-top: 28px; line-height: 2; }
+    .contato .info a { color: var(--dourado); font-weight: 600; }
+
+    footer { background: #0a1c2e; color: #9fb0c2; text-align: center; padding: 22px 0; font-size: .85rem; }
+
+    @media (max-width: 820px) {
+      .sobre { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">DÉBORA <span>LEAL</span></a>
+      <nav>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#experiencia">Experiência</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <small>Consultoria Financeira | Controladoria | FP&A</small>
+      <h1>Débora Leal</h1>
+      <h2>Clareza financeira para decisões melhores e crescimento sustentável.</h2>
+      <p>
+        Transformo informações financeiras e operacionais em planejamento, acompanhamento e decisões
+        mais claras para o negócio, conectando estratégia à rotina das equipes.
+      </p>
+      <div class="btns">
+        <a href="#contato" class="btn btn-primary">Fale comigo</a>
+        <a href="#projetos" class="btn btn-outline">Ver projetos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="titulo"><h2>Perfil</h2></div>
+      <div class="sobre">
+        <div>
+          <p>
+            Débora Leal é executiva e consultora com sólida experiência em <strong>FP&A, controladoria,
+            finanças, planejamento estratégico e gestão de desempenho</strong>. Sua trajetória reúne atuação
+            em empresas de diferentes portes e segmentos, incluindo calçados, indústria têxtil,
+            semicondutores, distribuição e tecnologia.
+          </p>
+          <p>
+            Por meio da <strong>DLeal Assessoria Empresarial e Contabilidade Ltda.</strong>, apoia empresas
+            na estruturação de processos financeiros e gerenciais, transformando dados em análises práticas
+            para orientar decisões, fortalecer o controle e identificar oportunidades de melhoria.
+          </p>
+          <p>
+            Sua abordagem combina visão estratégica e execução <em>hands-on</em>: compreende a realidade da
+            operação, organiza as informações e constrói soluções adequadas à necessidade de cada negócio.
+          </p>
+        </div>
+        <aside class="destaque">
+          <h3>Diferenciais</h3>
+          <ul>
+            <li>Experiência em diferentes setores e modelos de negócio</li>
+            <li>Integração entre finanças, estratégia e operação</li>
+            <li>Atuação prática e orientada à execução</li>
+            <li>Dados financeiros traduzidos em informação gerencial</li>
+            <li>Liderança de equipes multifuncionais</li>
+            <li>Foco em planejamento, custos e margens</li>
+            <li>Soluções ajustadas a cada empresa</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPOSTA DE VALOR -->
+  <section class="alt">
+    <div class="container">
+      <div class="titulo">
+        <h2>Proposta de valor</h2>
+        <p>A consultoria ajuda a empresa a responder perguntas essenciais:</p>
+      </div>
+      <ul class="perguntas">
+        <li>Para onde o negócio está caminhando financeiramente?</li>
+        <li>Quais áreas, produtos ou operações estão gerando resultado?</li>
+        <li>Onde estão as oportunidades de redução de custos e melhoria de margens?</li>
+        <li>Como transformar metas estratégicas em orçamento e planos de ação?</li>
+        <li>Quais indicadores devem ser acompanhados pela liderança?</li>
+        <li>Que cenários precisam ser considerados antes de uma decisão importante?</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="titulo">
+        <h2>Serviços de consultoria</h2>
+        <p>Mais estrutura, visibilidade e consistência para a gestão financeira e o processo decisório.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>FP&A e planejamento financeiro</h3>
+          <ul>
+            <li>Planejamento financeiro alinhado aos objetivos</li>
+            <li>Orçamento empresarial e projeções</li>
+            <li>Forecast e análise de cenários</li>
+            <li>Acompanhamento do realizado vs. planejado</li>
+            <li>Viabilidade econômico-financeira</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Orçamento e controladoria</h3>
+          <ul>
+            <li>Implantação ou revisão do processo orçamentário</li>
+            <li>Estruturação de centros de custo</li>
+            <li>Classificação e análise de custos e despesas</li>
+            <li>Orçamento base zero</li>
+            <li>Indicadores gerenciais</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Estratégia financeira e desempenho</h3>
+          <ul>
+            <li>Análise de custos, margens e desempenho</li>
+            <li>Oportunidades de melhoria e eficiência</li>
+            <li>Definição de metas e prioridades</li>
+            <li>Relatórios para liderança e stakeholders</li>
+            <li>Insights para decisões táticas e estratégicas</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Planejamento tributário</h3>
+          <ul>
+            <li>Análise comparativa de cenários tributários</li>
+            <li>Avaliação de alternativas em diferentes estados</li>
+            <li>Informações organizadas para decisão empresarial</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Fluxo de caixa e gestão financeira</h3>
+          <ul>
+            <li>Análise e planejamento de fluxo de caixa</li>
+            <li>Avaliação de necessidades financeiras</li>
+            <li>Acompanhamento da liquidez e da operação</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Gestão de projetos e processos</h3>
+          <ul>
+            <li>Mapeamento de processos e atividades</li>
+            <li>Organização de fluxos e responsabilidades</li>
+            <li>Acompanhamento de projetos</li>
+            <li>Implantação de ferramentas e rotinas de gestão</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="alt" id="projetos">
+    <div class="container">
+      <div class="titulo">
+        <h2>Projetos em destaque</h2>
+        <p>Trabalhos realizados pela DLeal Assessoria Empresarial e Contabilidade Ltda.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <span class="periodo">Jan/2022 – Out/2022</span>
+          <h3>Corello Calçados</h3>
+          <p><strong>Implementação do processo orçamentário.</strong> Análise do organograma, mapeamento de atividades, fluxogramas, centros de custo, classificação de despesas e orçamento base zero.</p>
+          <p class="foco"><strong>Foco:</strong> base organizada para planejamento e acompanhamento orçamentário.</p>
+        </article>
+        <article class="card">
+          <span class="periodo">Jan/2019 – Abr/2022</span>
+          <h3>Camaleoa Indústria Têxtil</h3>
+          <p><strong>Implementação do processo orçamentário.</strong> Análise da estrutura, implementação de centros de custo, orçamento base zero e modelagem do formato de acompanhamento.</p>
+          <p class="foco"><strong>Foco:</strong> estrutura de planejamento e acompanhamento aderente à operação.</p>
+        </article>
+        <article class="card">
+          <span class="periodo">Jan/2022 – Abr/2022</span>
+          <h3>Zenglein Calçados</h3>
+          <p><strong>Planejamento tributário.</strong> Análise de diferentes cenários em estados brasileiros para apoiar a escolha do mais adequado.</p>
+          <p class="foco"><strong>Foco:</strong> decisão baseada na comparação estruturada de cenários.</p>
+        </article>
+        <article class="card">
+          <span class="periodo">Set/2016 – Set/2018</span>
+          <h3>Bebecê Calçados</h3>
+          <p><strong>Implementação do processo orçamentário.</strong> Análise de estrutura e processos, organograma, fluxogramas, metas, custos e despesas, modelagem de acompanhamento e reuniões com diretorias.</p>
+          <p class="foco"><strong>Foco:</strong> conectar metas, informações financeiras e gestão.</p>
+        </article>
+        <article class="card">
+          <h3>Imagine Arquitetura</h3>
+          <p><strong>Acompanhamento e controle de projetos.</strong> Acompanhamento no Trello e implantação do sistema de controle de projetos DOIT.</p>
+          <p class="foco"><strong>Foco:</strong> organização das iniciativas e visibilidade do andamento.</p>
+        </article>
+        <article class="card">
+          <h3>Via Uno</h3>
+          <p><strong>BID de logística.</strong> Processo de BID para avaliar oportunidades relacionadas aos custos de frete.</p>
+          <p class="foco"><strong>Foco:</strong> comparação de alternativas logísticas e análise de custos.</p>
+        </article>
+        <article class="card">
+          <h3>CFC Valderez</h3>
+          <p><strong>Mapeamento e acompanhamento de indicadores.</strong> Gasto de combustível por veículo, métricas de aprovação e desempenho dos alunos.</p>
+          <p class="foco"><strong>Foco:</strong> indicadores relevantes para acompanhar a operação.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia">
+    <div class="container">
+      <div class="titulo">
+        <h2>Experiência profissional</h2>
+        <p>Posições de liderança e especialização em finanças, planejamento e controladoria.</p>
+      </div>
+      <div class="timeline">
+        <div class="item"><h3>Head de FP&A, Controladoria, Financeiro e Jurídico</h3><span>Growdev</span></div>
+        <div class="item"><h3>FP&A Manager</h3><span>DLeal Assessoria Empresarial e Contabilidade Ltda.</span></div>
+        <div class="item"><h3>Especialista em Controladoria</h3><span>HT Micron Semicondutores S.A.</span></div>
+        <div class="item"><h3>Gerente Financeira</h3><span>França Distribuidora Ltda.</span></div>
+        <div class="item"><h3>Coordenadora de Controladoria</h3><span>Arezzo&Co</span></div>
+        <div class="item"><h3>Analista de Controladoria e Planejamento Estratégico</h3><span>Arezzo&Co</span></div>
+        <div class="item"><h3>Analista Contábil</h3><span>Arezzo&Co</span></div>
+        <div class="item"><h3>Analista Contábil</h3><span>Orplan</span></div>
+        <div class="item"><h3>Analista Contábil</h3><span>MGM Auditores e Contadores</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO / COMPETÊNCIAS -->
+  <section class="alt">
+    <div class="container">
+      <div class="titulo">
+        <h2>Formação e competências</h2>
+        <p>Formação e desenvolvimento em instituições como FGV, Unisinos, Universidade FUMEC e Growdev. Idioma: inglês.</p>
+      </div>
+      <div class="tags">
+        <span class="tag">FP&A</span>
+        <span class="tag">Controladoria</span>
+        <span class="tag">Planejamento Estratégico</span>
+        <span class="tag">Orçamento</span>
+        <span class="tag">Forecast</span>
+        <span class="tag">Viabilidade Econômico-Financeira</span>
+        <span class="tag">Fluxo de Caixa</span>
+        <span class="tag">Gestão de Projetos</span>
+        <span class="tag">Metodologias Ágeis</span>
+        <span class="tag">Custos e Margens</span>
+        <span class="tag">Indicadores</span>
+        <span class="tag">Liderança de Equipes</span>
+        <span class="tag">Report ao Mercado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO TRABALHAMOS -->
+  <section>
+    <div class="container">
+      <div class="titulo">
+        <h2>Como podemos trabalhar</h2>
+        <p>O escopo é definido de acordo com as prioridades, a estrutura e os objetivos de cada cliente.</p>
+      </div>
+      <div class="etapas">
+        <div class="etapa"><h3>Entendimento</h3><p>Necessidade e contexto da empresa.</p></div>
+        <div class="etapa"><h3>Análise</h3><p>Informações, estrutura e processos existentes.</p></div>
+        <div class="etapa"><h3>Desenho</h3><p>Solução e definição das prioridades.</p></div>
+        <div class="etapa"><h3>Implementação</h3><p>Processos, ferramentas e indicadores.</p></div>
+        <div class="etapa"><h3>Acompanhamento</h3><p>Resultados e aprimoramento da gestão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM É -->
+  <section class="alt">
+    <div class="container">
+      <div class="titulo"><h2>Para quem é</h2></div>
+      <div class="grid">
+        <div class="card"><p>Empresas que desejam <strong>implantar ou aprimorar o processo orçamentário</strong>.</p></div>
+        <div class="card"><p>Negócios que precisam de mais <strong>visibilidade sobre custos, despesas e resultados</strong>.</p></div>
+        <div class="card"><p>Organizações que querem <strong>fortalecer a controladoria</strong> e o acompanhamento gerencial.</p></div>
+        <div class="card"><p>Gestores que buscam <strong>indicadores</strong> para apoiar decisões.</p></div>
+        <div class="card"><p>Empresas que precisam <strong>avaliar cenários financeiros ou tributários</strong>.</p></div>
+        <div class="card"><p>Times que querem <strong>conectar planejamento estratégico à execução financeira</strong>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato" id="contato">
+    <div class="container">
+      <h2>Vamos conversar?</h2>
+      <p>
+        Vamos estruturar juntos uma gestão financeira mais clara, consistente e alinhada
+        aos objetivos do seu negócio.
+      </p>
+      <div class="btns" style="justify-content:center;">
+        <a href="mailto:leal.p.debora@outlook.com" class="btn btn-primary">Enviar e-mail</a>
+        <a href="https://www.linkedin.com/in/dlealassessoria/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      </div>
+      <div class="info">
+        <strong>Débora Leal</strong><br>
+        DLeal Assessoria Empresarial e Contabilidade Ltda.<br>
+        E-mail: <a href="mailto:leal.p.debora@outlook.com">leal.p.debora@outlook.com</a><br>
+        Campo Bom, Rio Grande do Sul, Brasil
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="ano"></span> Débora Leal | DLeal Assessoria Empresarial e Contabilidade Ltda. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
